@@ -1,0 +1,9 @@
+{
+    "python.analysis.extraPaths": [
+        "./texteditor",
+        "./libtextworker",
+        "../libtextworker"
+    ],
+    "python.formatting.provider": "black",
+    "python.analysis.typeCheckingMode": "off",
+}
