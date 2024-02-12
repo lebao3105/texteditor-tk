@@ -233,22 +233,22 @@ files = [
 
 [[package]]
 name = "pygubu"
-version = "0.32"
+version = "0.33"
 description = "A simple GUI builder for the python tkinter module"
 optional = false
 python-versions = ">=3.6"
 files = [
-    {file = "pygubu-0.32-py3-none-any.whl", hash = "sha256:86e53d125b5212876af66c8e6997ec9804033bb210619fe90d9b56b8df695b4b"},
-    {file = "pygubu-0.32.tar.gz", hash = "sha256:8cab2e02cc3b0cc7abe0fa22a3a39fddd14daa4108259f2b2658bda22982ae9a"},
+    {file = "pygubu-0.33-py3-none-any.whl", hash = "sha256:8eb5d83b94e38203179fc49319084f86ae63a24fe49f42b5321d2b32d83e9540"},
+    {file = "pygubu-0.33.tar.gz", hash = "sha256:c0ca25cba7dc96331e62f475deed92110b44f01ed2f4e18a5fdb041df9da20f2"},
 ]
 
 [package.dependencies]
 importlib-resources = {version = "*", markers = "python_version < \"3.9\""}
 
 [package.extras]
-all = ["AwesomeTkinter", "customtkinter", "tkcalendar", "tkintermapview", "tkintertable", "tkinterweb", "tksheet", "ttkwidgets"]
+all = ["AwesomeTkinter", "customtkinter (>=5.2.2)", "packaging", "pillow", "tkcalendar", "tkintermapview", "tkintertable", "tkinterweb", "tksheet", "ttkwidgets"]
 awesometkinter = ["AwesomeTkinter"]
-customtkinter = ["customtkinter (>=5.0.3)"]
+customtkinter = ["customtkinter (>=5.2.2)", "packaging", "pillow"]
 tkcalendar = ["tkcalendar"]
 tkintermapview = ["tkintermapview"]
 tkintertable = ["tkintertable"]
@@ -303,4 +303,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8"
-content-hash = "443c48d354134b890d99e1896f86d00733f35ab4fd48227c04932f11e645422a"
+content-hash = "11ee39779def420497b05ddaba7f7aef9473f694627ad16824f0b8313bc86af2"
