@@ -10,26 +10,22 @@
     <h3 align="right">
     A simple and cross-platform Python text editor.
     </h3>
-    <a href="https://github.com/lebao3105/texteditor/actions/workflows/wheeltk.yml">
-        <image src="https://github.com/lebao3105/texteditor/actions/workflows/wheeltk.yml/badge.svg?branch=data" align="right"/>
+    <a href="https://github.com/lebao3105/texteditor-tk/actions/workflows/wheeltk.yml">
+        <image src="https://github.com/lebao3105/texteditor-tk/actions/workflows/wheeltk.yml/badge.svg?branch=data" align="right"/>
     </a>
 </p>
-
-This is the **development** branch of texteditor 1.5.
-
-The code in the main branch is 1.5 alpha too, but it's not complete. I'm going to remanage everything - 'main' branch will store the most recent stable version. So use this branch or 'wip/wx' instead.
 
 Expected new features:
 
 * About window ~~(but the contents seem not to be shown - wthell??)~~
 
-* New auto-save implementation like the wip/wx branch - but it auto show on editor init (#5)
+* New auto-save implementation like the wip/wx branch - but it auto show on editor init (#1)
 
-* New Find & Replace dialog - not available right now
+* New Find & Replace dialog - not usable right now
 
-* An Editor class which embeds auto-save support by default (but that's not the reason of auto-open dialogs)
+* An Editor class which embeds auto-save support by default
 
-* Update libtextworker to 0.1.4 with fixes and new features (not released yet)
+* Update libtextworker to 0.1.4 with fixes and new features
 
 * Directory tree
 
@@ -48,6 +44,8 @@ These features will not here (comparing with wx builds):
 * Customizable interface
 
 * Auto save
+
+* Multiple languages
 
 See all app releases [here.](https://github.com/lebao3105/texteditor-tk/releases)
 
