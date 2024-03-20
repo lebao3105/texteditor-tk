@@ -1,7 +1,6 @@
 import os
 import typing
 
-from hashlib import md5
 from tkinter import Misc
 from tkinter.filedialog import askopenfilename, asksaveasfilename
 from tkinter.messagebox import askyesnocancel
@@ -9,7 +8,7 @@ from tkinter.ttk import Notebook
 
 from .extensions.generic import global_settings
 
-searchdir = global_settings.get("editor", "searchdir")
+searchdir = global_settings.getkey("editor", "searchdir")
 if not os.path.isdir(searchdir):
     searchdir = os.path.expanduser("~/Documents")
 
@@ -29,13 +28,10 @@ class FileOperations:
 
     # File touch
     def LoadFile(self, path: str):
-        tabname = self.NoteBook.tab("current", "text")
+        tabname: str = self.NoteBook.tab("current", "text")
 
-        if (
-            os.path.isfile(tabname.removesuffix(_(" (Duplicated)")))
-            or self.GetEditorFromCurrTab().IsModified
-        ):
-            if self.NewTabFn_Args is not None:
+        if os.path.isfile(tabname.removesuffix(_(" (Duplicated)"))) or self.GetEditorFromCurrTab().IsModified:
+            if self.NewTabFn_Args:
                 self.NewTabFn(**self.NewTabFn_Args)
             else:
                 self.NewTabFn()
@@ -46,11 +42,9 @@ class FileOperations:
     # GUI-side functions
     def OpenFileDialog(self, evt=None):
         return self.GetEditorFromCurrTab().LoadFile(
-            askopenfilename(
-                initialdir=searchdir,
-                parent=self.NoteBook,
-                title=_("Open a file to continue"),
-            )
+            askopenfilename(initialdir=searchdir,
+                            parent=self.NoteBook,
+                            title=_("Open a file to continue"))
         )
 
     def SaveFileEvent(self, evt=None):
@@ -62,12 +56,10 @@ class FileOperations:
 
     def SaveAs(self, evt=None):
         return self.GetEditorFromCurrTab().SaveFile(
-            asksaveasfilename(
-                confirmoverwrite=True,
-                initialdir=searchdir,
-                parent=self.NoteBook,
-                title=_("Save this file as..."),
-            )
+            asksaveasfilename(confirmoverwrite=True,
+                              initialdir=searchdir,
+                              parent=self.NoteBook,
+                              title=_("Save this file as..."))
         )
     
     def OnEditorDestroy(self, evt):
@@ -86,7 +78,7 @@ class FileOperations:
             
     def InitEditor(self):
         currtab = self.GetEditorFromCurrTab()
-        currtab.bind("<Destroy>", self.OnEditorDestroy)
+        currtab.bind("<Destroy>", self.OnEditorDestroy, True)
 
     def GetEditorFromTab(self, tab) -> Misc:
         return self.NoteBook.nametowidget(tab).winfo_children()[0]

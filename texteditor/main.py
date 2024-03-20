@@ -24,9 +24,7 @@ def start_app(argv: list[str]):
 
     if n > 0:
         for i in range(1, n):
-            if not (
-                os.path.exists(argv[i]) and os.path.isdir(argv[i])
-            ) and __filenotfound(argv[i]):
+            if not os.path.exists(argv[i]) and os.path.isdir(argv[i]) and __filenotfound(argv[i]):
                 open(argv[i], "w")
 
             if i >= 2:
