@@ -1,5 +1,5 @@
 import os
-from tkinter import END, Frame
+from tkinter import Frame
 from tkinter.messagebox import askyesnocancel
 from tkinter.ttk import Notebook
 from typing import Literal
@@ -27,6 +27,7 @@ class TabsViewer(Notebook):
 
         # A tab but it's used to add a new tab
         # Idea from StackOverflow.. I don't know there was something like that
+        # TODO: Be able to hide this
         dummy = Frame()
         self.add(dummy, text="+")
 
@@ -37,37 +38,22 @@ class TabsViewer(Notebook):
                     "accelerator": "Ctrl+N",
                     "handler": lambda: self.add_tab("default"),
                 },
-                {"label": _("Close the open tab"), "handler": lambda: self.close_tab},
-                {
-                    "label": _("Clone the open tab"),
-                    "handler": lambda: self.duplicate_tab,
-                },
+                {"label": _("Close the open tab"), "handler": lambda: self.close_tab}
             ]
         )
-        self.bind(
-            "<Button-3>",
-            lambda event: self.right_click_menu.post(event.x_root, event.y_root),
-        )
+        self.bind("<Button-3>", lambda evt: self.right_click_menu.post(evt.x_root, evt.y_root))
         self.bind("<<NotebookTabChanged>>", self.tab_changed)
+        self.add_right_click_command = self.right_click_menu.add_command
 
         # Place the notebook, if you want
         if do_place is True:
             self.pack(expand=True, fill="both")
 
-    def add_right_click_command(
-        self, label: str = None, fn: object = None, acc: str = None
-    ):
-        return self.right_click_menu.add_command(label, fn, acc)
-
-    def add_tab(
-        self,
-        idx: int | None | Literal["default"] = None,
-        newtabtitle: str = newtablabel,
-    ):
+    def add_tab(self, idx: int | None | Literal["default"] = None, newtabtitle: str = newtablabel):
         neweditor = editor.Editor(self)
         neweditor.EditorInit(custom_config_path=_editor_config_load)
         neweditor.pack(expand=True, fill="both")
-        clrcall.configure(neweditor, True)
+        clrcall.configure(neweditor, childs_too=True)
 
         if isinstance(idx, int):
             self.insert(idx, neweditor._frame, text=newtabtitle)
@@ -88,12 +74,10 @@ class TabsViewer(Notebook):
     def close_tab(self):
         tabname = self.tab(self.select(), "text")
         if tabname.endswith(" *"):
-            result = askyesnocancel(
-                title=_("Tab close"),
-                message=_("The content of this tab is modified. Save it?"),
-                icon="info",
-            )
-            if result is True:
+            result = askyesnocancel(_("Tab close"),
+                                    _("The content of this tab is modified. Save it?"),
+                                    icon="info")
+            if result:
                 self.fileops.SaveFile(tabname.removesuffix(" *"))
             elif result is None:
                 return
@@ -112,14 +96,6 @@ class TabsViewer(Notebook):
             return
 
         self.nametitle(tabname)
-
-    def duplicate_tab(self):
-        content = self.nametowidget(self.select()).winfo_children()[0].get(1.0, END)
-        tabname = self.tab(self.select(), "text")
-
-        self.add_tab(idx="default")
-        self.nametowidget(self.select()).insert(1.0, content)
-        self.tab("current", text=tabname + _(" (Duplicated)"))
 
     def reopenfile(self, event=None):
         filename = self.tab(self.select(), "text")

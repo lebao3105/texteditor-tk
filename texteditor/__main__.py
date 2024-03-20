@@ -14,7 +14,6 @@ def help():
     for command in commands:
         print(f"--{command}\t\t{commands[command][1]}")
     exit(0)
-    
 
 def version():
     from texteditor import __version__
@@ -55,20 +54,12 @@ register_command(version, "Show the app version")
 def invalid_option(): help(); exit(-1)
 
 def getoptions():
-    opts = [
-        "editorcfg=",
-        "themesdir=",
-        "help",
-        "version",
-        "libtewdir=",
-        "appdatadir="
-    ]
+    opts = ["editorcfg=", "themesdir=",
+            "help", "version",
+            "libtewdir=", "appdatadir="]
 
-    options, args = getopt.getopt(
-        sys.argv[1:],
-        "",
-        opts
-    )
+    options, args = getopt.getopt(sys.argv[1:], "", opts)
+
     for option, follow in options:
         for it in opts:
             if option == f'--{it.removesuffix("=")}':
@@ -78,14 +69,17 @@ def getoptions():
                 else:
                     target(follow)
     
+    if not args: args = ['Nothing']
     return args
 
 def main():
     files = getoptions()
+
     from .extensions import generic
+    generic.logger.info(f"Files: {' '.join(files)}")
     generic.ready()
+
     from . import main
     main.start_app(files)
 
-if __name__ == "__main__":
-    sys.exit(main())
+if __name__ == "__main__": main()

@@ -7,7 +7,8 @@ class Editor(TextWidget, AutoSave):
 
     def __init__(self, *args, **kwds):
         TextWidget.__init__(self, *args, **kwds)
-        self.autosv = AutoSaveConfig(self)
+        AutoSave.__init__(self)
+        self.autosv = AutoSaveConfig()
         self.autosv.do_the_task = self.do_the_task
 
     # AutoSaveConfig

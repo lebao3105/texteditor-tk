@@ -3,11 +3,9 @@ import sys
 from tkinter import Misc, TclVersion, TkVersion, Toplevel
 from tkinter.ttk import Button, Frame, Label, Notebook
 
-from libtextworker.general import CraftItems
 from libtextworker.interface.tk.about import AboutDialog
 from libtextworker.interface.tk.editor import StyledTextControl
 
-from libtextworker import LICENSES
 from libtextworker import __version__ as libver
 from texteditor import __version__ as appver
 from texteditor.extensions.generic import clrcall
@@ -16,26 +14,25 @@ from texteditor.extensions.generic import clrcall
 class About(AboutDialog):
     ProjectName = "textworker"
     ProjectVersion = appver
-    ProjectSite = "https://github.com/lebao3105/texteditor "
+    ProjectSite = "https://github.com/lebao3105/texteditor-tk"
 
     ProjectDescription = _(
         "A text editor in Python, with customizable and easy-to-use user interface.\n"
         "Read documents online: https://lebao3105.gitbook.io/texteditor_doc"
     )
 
-    ProjectLicense = (
-        "(C) Le Bao Nguyen 2022-2023\n"
-        "By using this application, you agree to texteditor license below:\n\n"
-        f'{open(CraftItems(LICENSES, "GPL3_full.txt"), "r").read()}'
-    )
+    ProjectLicense = \
+        "(C) 2022-2024 Le Bao Nguyen.\n" \
+        "This project is licensed under the GNU General Public License Version 3.0."
 
-    ProjectBuilds: str = (
-        f"Libtextworker {libver}\n"
-        f"Tk {TkVersion}\n"
-        f"Tcl {TclVersion}\n"
-        f"Operating system: {platform.system()} version {platform.version()}\n"
-        f"Python {sys.version}"
-    )
+    ProjectBuilds: str = \
+        f"""
+        Libtextworker {libver}
+        Tk {TkVersion}
+        Tcl {TclVersion}
+        Operating system: {platform.system()} version {platform.version()}
+        Python {sys.version}"
+        """
 
     Developers = "Le Bao Nguyen (@lebao3105)"
     Translators = Testers = Developers  # Looks sad
@@ -44,7 +41,7 @@ class About(AboutDialog):
         dlg = Toplevel(master)
         dlg.wm_title(_("About this project"))
         dlg.grab_set()
-        dlg.geometry("350x485")
+        dlg.geometry("400x585")
 
         project_infos = _(
             "About this project\n"
@@ -91,6 +88,4 @@ class About(AboutDialog):
         quitbtn.pack(side="right")
         bottomfm.pack(fill="x", side="bottom")
 
-        clrcall.configure(dlg, True)
-
-        dlg.mainloop()
+        clrcall.configure(dlg, childs_too=True)

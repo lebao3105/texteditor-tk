@@ -1,8 +1,9 @@
 # For texteditor's local use only.
+import logging
 import os
 import typing
 
-from libtextworker.general import CraftItems, GetCurrentDir
+from libtextworker.general import CraftItems, GetCurrentDir, Logger, strhdlr, formatter
 from libtextworker.get_config import GetConfig
 from libtextworker.interface import stock_ui_configs
 from libtextworker.interface.tk import ColorManager
@@ -17,11 +18,22 @@ CONFIGS_PATH = os.path.expanduser(
 )
 DATA_PATH: str = CraftItems(GetCurrentDir(__file__), "..", "data")
 
+
 clrcall: ColorManager
 configs: str
+global_settings: GetConfig
 _editor_config_load: str
 _theme_load: str
-global_settings: GetConfig
+
+
+logger = Logger("texteditor", logging.INFO)
+logger.UseGUIToolKit("tk")
+
+filehdlr = logging.FileHandler(os.path.expanduser("~/.logs/texteditor.log"))
+filehdlr.setFormatter(formatter)
+
+logger.addHandler(strhdlr)
+logger.addHandler(filehdlr)
 
 
 def find_resource(t: typing.Literal["theme", "editor"]) -> str:
@@ -49,12 +61,21 @@ def ready():
     global THEMES_DIR, EDITOR_DIR, TOPLV_DIR
 
     configs = open(CraftItems(DATA_PATH, "appconfig.ini"), "r").read()
-    global_settings = GetConfig(configs, file=CONFIGS_PATH)
+    global_settings = GetConfig(configs, CONFIGS_PATH, True)
+
+    logger.info(f"Settings path: {CONFIGS_PATH}")
+    logger.info(f"Application datas (icon, updater, default settings) are stored in {DATA_PATH}")
 
     TOPLV_DIR = os.path.dirname(CONFIGS_PATH)
     THEMES_DIR = TOPLV_DIR + "/themes/"
     EDITOR_DIR = TOPLV_DIR + "/editorconfigs/"
 
+    logger.info(f"Themes directory: {THEMES_DIR}")
+    logger.info(f"Editor settings directory: {EDITOR_DIR}")
+
     _theme_load = find_resource("theme")
     _editor_config_load = find_resource("editor")
-    clrcall = ColorManager(stock_ui_configs, _theme_load)
+
+    clrcall = ColorManager(customfilepath=_theme_load)
+
+    logger.info("Ready to go!")

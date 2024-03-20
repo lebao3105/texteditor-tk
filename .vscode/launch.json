@@ -3,16 +3,17 @@
     "configurations": [
         {
             "name": "Run texteditor with no other arguments",
-            "type": "python",
+            "type": "debugpy",
             "request": "launch",
             "module": "texteditor",
             "console": "internalConsole",
             "justMyCode": false,
-            "env": {"PYTHONPATH": "../libtextworker"}
+            "env": {"PYTHONPATH": "../libtextworker"},
+            "args": ["--appdatadir=../tew-data"]
         },
         {
             "name": "Run texteditor to open README.md",
-            "type": "python",
+            "type": "debugpy",
             "request": "launch",
             "module": "texteditor",
             "console": "internalConsole",

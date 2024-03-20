@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Le Bao Nguyen <nopublicemail@hotmail.com>
-# This file is distributed under the same license as the me.lebao3105.texteditor package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: me.lebao3105.texteditor 1.4.0\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-08 12:59+0700\n"
+"POT-Creation-Date: 2024-03-20 21:20+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,340 +17,185 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: texteditor/mainwindow.py:100
-msgid "Autosave"
-msgstr ""
-
-#: texteditor/mainwindow.py:107
-msgid "Open System Shell"
-msgstr ""
-
-#: texteditor/mainwindow.py:112
-msgid "Autocolor mode"
-msgstr ""
-
-#: texteditor/mainwindow.py:117
-msgid "Wrap (by word)"
-msgstr ""
-
-#: texteditor/mainwindow.py:124
+#: texteditor/mainwindow.py:84
 msgid "File"
 msgstr ""
 
-#: texteditor/mainwindow.py:125
+#: texteditor/mainwindow.py:84
 msgid "Edit"
 msgstr ""
 
-#: texteditor/mainwindow.py:126
+#: texteditor/mainwindow.py:85
 msgid "Config"
 msgstr ""
 
-#: texteditor/mainwindow.py:153 texteditor/backend/get_config.py:173
-#: texteditor/backend/get_config.py:181
+#: texteditor/mainwindow.py:85
+msgid "Help"
+msgstr ""
+
+#: texteditor/mainwindow.py:103 texteditor/mainwindow.py:121
 msgid "Warning"
 msgstr ""
 
-#: texteditor/mainwindow.py:154
+#: texteditor/mainwindow.py:104
 msgid "This will reset ALL configurations you have ever made. Continue?"
 msgstr ""
 
-#: texteditor/mainwindow.py:160
-msgid "Error occured!"
+#: texteditor/mainwindow.py:122
+msgid ""
+"Changing the application color requires the autocolor function to be turned "
+"off.                                      Don't worry, this change is only "
+"for this session."
 msgstr ""
 
-#: texteditor/mainwindow.py:162
-msgid ""
-"Unable to reset configuration file: Backed up default variables not found"
+#: texteditor/mainwindow.py:139
+msgid "This is applied only for this session."
+msgstr ""
+
+#: texteditor/mainwindow.py:151
+msgid "Open a directory"
+msgstr ""
+
+#: texteditor/mainwindow.py:160
+msgid "Find for a text..."
 msgstr ""
 
 #: texteditor/mainwindow.py:166
-msgid "Error: Unable to reset all configurations!"
+msgid "Find and Replace"
 msgstr ""
 
-#: texteditor/mainwindow.py:171
-msgid "Completed"
-msgstr ""
-
-#: texteditor/mainwindow.py:173
-msgid ""
-"Resetted texteditor configurations.\n"
-"Restart the application to take the effect."
-msgstr ""
-
-#: texteditor/mainwindow.py:177
-msgid "Resetted all configurations."
-msgstr ""
-
-#: texteditor/mainwindow.py:209
-msgid "Stopped autocolor service."
-msgstr ""
-
-#: texteditor/mainwindow.py:217
-msgid "Started autocolor service."
-msgstr ""
-
-#: texteditor/tabs.py:33
-msgid "New tab"
-msgstr ""
-
-#: texteditor/tabs.py:38
-msgid "Close the current opening tab"
-msgstr ""
-
-#: texteditor/tabs.py:42
-msgid "Duplicate the current opening tab"
-msgstr ""
-
-#: texteditor/tabs.py:46
-msgid "Reopen the file"
-msgstr ""
-
-#: texteditor/tabs.py:64
+#: texteditor/tabs.py:14
 msgid "Untitled"
 msgstr ""
 
-#: texteditor/tabs.py:102 texteditor/views/menubar.ui:23
-msgid "Save"
+#: texteditor/tabs.py:37
+msgid "New Tab"
 msgstr ""
 
-#: texteditor/tabs.py:107
-msgid "Save as"
+#: texteditor/tabs.py:41
+msgid "Close the open tab"
 msgstr ""
 
-#: texteditor/tabs.py:119 texteditor/tabs.py:130 texteditor/tabs.py:159
-#: texteditor/views/about.ui:10
-msgid "Text Editor"
-msgstr ""
-
-#: texteditor/tabs.py:137
+#: texteditor/tabs.py:77
 msgid "Tab close"
 msgstr ""
 
-#: texteditor/tabs.py:138
+#: texteditor/tabs.py:78
 msgid "The content of this tab is modified. Save it?"
 msgstr ""
 
-#: texteditor/tabs.py:167
-msgid " (Duplicated)"
+#: texteditor/main.py:18
+#, python-brace-format
+msgid "{filepath} not found - create it?"
 msgstr ""
 
-#: texteditor/tabs.py:173
-msgid "Cannot reopen this tab because it opens no file."
+#: texteditor/extensions/autosave.py:53
+msgid "30 seconds"
 msgstr ""
 
-#: texteditor/tabs.py:180
-msgid "Text editor"
+#: texteditor/extensions/autosave.py:54
+msgid "1 minute"
+msgstr ""
+
+#: texteditor/extensions/autosave.py:55
+msgid "2 minutes"
 msgstr ""
 
 #: texteditor/extensions/autosave.py:56
-msgid "Autosave configuration"
+msgid "5 minutes"
 msgstr ""
 
-#: texteditor/extensions/autosave.py:65
+#: texteditor/extensions/autosave.py:57
+msgid "10 minutes"
+msgstr ""
+
+#: texteditor/extensions/autosave.py:58
+msgid "15 minutes"
+msgstr ""
+
+#: texteditor/extensions/autosave.py:59
+msgid "20 minutes"
+msgstr ""
+
+#: texteditor/extensions/autosave.py:60
+msgid "30 minutes"
+msgstr ""
+
+#: texteditor/file_operations.py:33
+msgid " (Duplicated)"
+msgstr ""
+
+#: texteditor/file_operations.py:47
+msgid "Open a file to continue"
+msgstr ""
+
+#: texteditor/file_operations.py:62
+msgid "Save this file as..."
+msgstr ""
+
+#: texteditor/file_operations.py:69
+msgid "Not saved"
+msgstr ""
+
+#: texteditor/file_operations.py:70
+#, python-brace-format
+msgid "Save {path}? It has unsaved changes."
+msgstr ""
+
+#: texteditor/views/about.py:20
 msgid ""
-"Select autosave time (minutes)\n"
-"Autosave function will be launched after a time."
+"A text editor in Python, with customizable and easy-to-use user interface.\n"
+"Read documents online: https://lebao3105.gitbook.io/texteditor_doc"
 msgstr ""
 
-#: texteditor/extensions/autosave.py:71
-msgid "Please note that Autosave only saves the current selected tab."
+#: texteditor/views/about.py:42
+msgid "About this project"
 msgstr ""
 
-#: texteditor/extensions/autosave.py:82
-msgid "Save this value"
+#: texteditor/views/about.py:47
+msgid "About this project\n"
 msgstr ""
 
-#: texteditor/extensions/autosave.py:93
-msgid "Cancel"
+#: texteditor/views/about.py:54
+msgid "This software is made possible by:\n"
 msgstr ""
 
-#: texteditor/extensions/autosave.py:129
-msgid "Wrong autosave time specified."
-msgstr ""
-
-#: texteditor/extensions/cmd.py:25
-msgid "Read only"
-msgstr ""
-
-#: texteditor/extensions/cmd.py:46
-msgid "Available commands:\n"
-msgstr ""
-
-#: texteditor/extensions/cmd.py:47
-msgid "exit: Close this box\n"
-msgstr ""
-
-#: texteditor/extensions/cmd.py:48
-msgid "help: Show this message\n"
-msgstr ""
-
-#: texteditor/extensions/cmd.py:49
-msgid "clear: Clear this box\n"
-msgstr ""
-
-#: texteditor/extensions/cmd.py:53
+#: texteditor/views/about.py:58
+#, python-brace-format
 msgid ""
-"term: Open terminal (not this one) - don't run this if you are running this "
-"application from console!\n"
-msgstr ""
-
-#: texteditor/extensions/cmd.py:59
-msgid ""
-"Running CONSOLE application which requires user input is not recommended "
-"yet.\n"
-msgstr ""
-
-#: texteditor/extensions/cmd.py:62
-msgid "You won't get anything.\n"
-msgstr ""
-
-#: texteditor/extensions/cmd.py:69
-msgid ""
-"This will open console defined by defconsole value in configuration file. "
-"Please don't run any shell!"
-msgstr ""
-
-#: texteditor/extensions/cmd.py:92
-msgid "No such a directory like that"
-msgstr ""
-
-#: texteditor/extensions/cmd.py:114
-msgid "Error"
-msgstr ""
-
-#: texteditor/extensions/cmd.py:116
-msgid "Cannot return the command result to the terminal : TCLError occured!"
-msgstr ""
-
-#: texteditor/extensions/finding.py:22
-msgid "Find something here..."
-msgstr ""
-
-#: texteditor/extensions/finding.py:25 texteditor/views/menubar.ui:92
-msgid "Find"
-msgstr ""
-
-#: texteditor/extensions/finding.py:36 texteditor/extensions/finding.py:40
-#: texteditor/views/menubar.ui:99
-msgid "Replace"
-msgstr ""
-
-#: texteditor/backend/file_operations.py:58
-msgid "Infomation"
-msgstr ""
-
-#: texteditor/backend/file_operations.py:60
-msgid ""
-"It seems that the file you're trying to open is in another tab.\n"
 "\n"
-"                Load anyway? (to a new tab)"
+"Artists:\n"
+"\t{self.ArtMakers}"
 msgstr ""
 
-#: texteditor/backend/file_operations.py:70
-#, python-format
-msgid "Saving file %s"
-msgstr ""
-
-#: texteditor/backend/file_operations.py:92
-#, python-format
-msgid "Opening file %s"
-msgstr ""
-
-#: texteditor/backend/get_config.py:108
-msgid "Error occured while writing contents to the file"
-msgstr ""
-
-#: texteditor/backend/get_config.py:109
-#, python-format
-msgid "Details: %s"
-msgstr ""
-
-#: texteditor/backend/get_config.py:175
+#: texteditor/views/about.py:61
+#, python-brace-format
 msgid ""
-"Wrong font size defined on the configuration file - the program will use "
-"font size 14."
+"\n"
+"Testers:\n"
+"\t{self.Testers}"
 msgstr ""
 
-#: texteditor/backend/get_config.py:182
-msgid "The defined font size is smaller (or equal) than 10."
+#: texteditor/views/about.py:64
+#, python-brace-format
+msgid ""
+"\n"
+"Translators:\n"
+"\t{self.Translators}"
 msgstr ""
 
-#: texteditor/backend/get_config.py:194
-msgid "Wrong font type in the configuration file."
+#: texteditor/views/about.py:79
+msgid "This software"
 msgstr ""
 
-#: texteditor/backend/textwidget.py:81 texteditor/views/menubar.ui:70
-msgid "Cut"
+#: texteditor/views/about.py:80
+msgid "Contributors"
 msgstr ""
 
-#: texteditor/backend/textwidget.py:86 texteditor/views/menubar.ui:76
-msgid "Copy"
+#: texteditor/views/about.py:81
+msgid "License"
 msgstr ""
 
-#: texteditor/backend/textwidget.py:91 texteditor/views/menubar.ui:82
-msgid "Paste"
-msgstr ""
-
-#: texteditor/backend/textwidget.py:98 texteditor/views/menubar.ui:49
-msgid "Undo"
-msgstr ""
-
-#: texteditor/backend/textwidget.py:103 texteditor/views/menubar.ui:55
-msgid "Redo"
-msgstr ""
-
-#: texteditor/views/about.py:14
-msgid "About this app"
-msgstr ""
-
-#: texteditor/views/about.py:34
-msgid "Version {}"
-msgstr ""
-
-#: texteditor/views/about.ui:26
-msgid "A small, lightweight and customizable text editor."
-msgstr ""
-
-#: texteditor/views/about.ui:37
-msgid "OK"
-msgstr ""
-
-#: texteditor/views/menubar.ui:9
-msgid "Open"
-msgstr ""
-
-#: texteditor/views/menubar.ui:16
-msgid "New"
-msgstr ""
-
-#: texteditor/views/menubar.ui:30
-msgid "Save as..."
-msgstr ""
-
-#: texteditor/views/menubar.ui:40
-msgid "Quit"
-msgstr ""
-
-#: texteditor/views/menubar.ui:61
-msgid "Select all"
-msgstr ""
-
-#: texteditor/views/menubar.ui:108
-msgid "Show configurations"
-msgstr ""
-
-#: texteditor/views/menubar.ui:114
-msgid "Reset all configurations"
-msgstr ""
-
-#: texteditor/views/menubar.ui:120
-msgid "Toggle color mode..."
-msgstr ""
-
-#: texteditor/views/menubar.ui:129
-msgid "Read documents..."
-msgstr ""
-
-#: texteditor/views/menubar.ui:135
-msgid "About"
+#: texteditor/views/about.py:82
+msgid "System specifications"
 msgstr ""

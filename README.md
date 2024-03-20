@@ -5,57 +5,67 @@
 
 <p align="right">
     <h1 align="right">
-        <strong>Textworker</strong>
+        <strong>Textworker (Tkinter)</strong>
     </h1>
     <h3 align="right">
     A simple and cross-platform Python text editor.
     </h3>
-    <a href="https://github.com/psf/black">
-        <image src="https://img.shields.io/badge/code%20style-black-000000.svg" align="right"/>
-    </a>
     <a href="https://github.com/lebao3105/texteditor/actions/workflows/wheeltk.yml">
         <image src="https://github.com/lebao3105/texteditor/actions/workflows/wheeltk.yml/badge.svg?branch=data" align="right"/>
     </a>
 </p>
 
-<br clear="both">
-
-## Notes from this work-in-progress (WIP) version
-
-This is the **unstable** branch of texteditor 1.5 (alpha 0).
+This is the **development** branch of texteditor 1.5.
 
 The code in the main branch is 1.5 alpha too, but it's not complete. I'm going to remanage everything - 'main' branch will store the most recent stable version. So use this branch or 'wip/wx' instead.
 
 Expected new features:
-* About window ~~(but the contents seem not to be shown - wthell??)~~ (fixed)
+
+* About window ~~(but the contents seem not to be shown - wthell??)~~
+
 * New auto-save implementation like the wip/wx branch - but it auto show on editor init (#5)
+
 * New Find & Replace dialog - not available right now
+
 * An Editor class which embeds auto-save support by default (but that's not the reason of auto-open dialogs)
+
 * Update libtextworker to 0.1.4 with fixes and new features (not released yet)
+
 * Directory tree
 
-These features will not here (comparison with wx builds):
+These features will not here (comparing with wx builds):
+
 * Markdown preview
+
 * Preferences & Updater dialogs
 
 ## Features
 
 * Lightweight
+
 * Run some tasks with Command Window (removed on version 1.5a0)
+
 * Customizable interface
+
 * Auto save
 
-See all app releases [here.](https://github.com/lebao3105/texteditor/releases)
+See all app releases [here.](https://github.com/lebao3105/texteditor-tk/releases)
 
-You can get wheels from [GitHub actions](https://github.com/lebao3105/texteditor/actions).
+You can get wheels from [GitHub actions](https://github.com/lebao3105/texteditor-tk/actions).
 
 ## Build and install
 
-Requires Python 3.8+ with Tkinter and pip installed.
+Requires Python 3.10+ with Tkinter and pip installed.
 
 Installable directly from TestPypi as the ```texteditor``` package.
 
-Run:
+To generate translations, which are not provided by default in the source code: Install gettext and make, then run:
+
+```bash
+make maketrans
+```
+
+Run the program:
 
 ```bash
 python3 -m texteditor [args]

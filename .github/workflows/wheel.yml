@@ -1,11 +1,35 @@
-on:
-    workflow_dispatch:
+name: Build releases (wheel)
 
-name: Build releases (wheel) (wx version)
+on:
+  workflow_dispatch:
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-          - name: echoooo
-            run: echo if you see this, go to the corressponding workflow on "data" branch.
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: 'recursive'
+      
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          sudo apt install python3-tk python3-pip -y
+          pip3 install poetry wheel
+        working-directory: texteditor
+      
+      - name: Build
+        run: |
+          python3 -m poetry build
+        working-directory: texteditor
+      
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: Textworker_tkWheel
+          path: texteditor/dist/
