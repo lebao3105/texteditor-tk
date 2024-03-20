@@ -17,13 +17,13 @@ class About(AboutDialog):
     ProjectSite = "https://github.com/lebao3105/texteditor-tk"
 
     ProjectDescription = _(
-        "A text editor in Python, with customizable and easy-to-use user interface.\n"
-        "Read documents online: https://lebao3105.gitbook.io/texteditor_doc"
+        "\tA text editor in Python, with customizable and easy-to-use user interface.\n"
+        "\tRead documents online: https://lebao3105.gitbook.io/texteditor_doc"
     )
 
     ProjectLicense = \
-        "(C) 2022-2024 Le Bao Nguyen.\n" \
-        "This project is licensed under the GNU General Public License Version 3.0."
+        "\t(C) 2022-2024 Le Bao Nguyen.\n" \
+        "\tThis project is licensed under the GNU General Public License Version 3.0."
 
     ProjectBuilds: str = \
         f"""
@@ -41,27 +41,24 @@ class About(AboutDialog):
         dlg = Toplevel(master)
         dlg.wm_title(_("About this project"))
         dlg.grab_set()
-        dlg.geometry("400x585")
+        dlg.geometry("700x510")
 
-        project_infos = _(
-            "About this project\n"
-            f"{self.ProjectName} version {self.ProjectVersion}\n"
-            f"Description: {self.ProjectDescription}\n"
-            f"Project website: {self.ProjectSite}"
-        )
+        project_infos = _("\n\tAbout this project\n"
+                          f"\t{self.ProjectName} version {self.ProjectVersion}\n"
+                          f"\tDescription: {self.ProjectDescription}\n"
+                          f"\tProject website: {self.ProjectSite}")
 
-        project_credits = _(
-            "This software is made possible by:\n" f"Developers:\n\t{self.Developers}"
-        )
+        project_credits = _("\n\tThis software is made possible by:\n"
+                            f"\t\tDevelopers:\n\t\t\t{self.Developers}")
 
         if self.ArtMakers:
-            project_credits += _(f"\nArtists:\n\t{self.ArtMakers}")
+            project_credits += _(f"\n\t\tArtists:\n\t\t\t{self.ArtMakers}")
 
         if self.Testers:
-            project_credits += _(f"\nTesters:\n\t{self.Testers}")
+            project_credits += _(f"\n\t\tTesters:\n\t\t\t{self.Testers}")
 
         if self.Translators:
-            project_credits += _(f"\nTranslators:\n\t{self.Translators}")
+            project_credits += _(f"\n\t\tTranslators:\n\t\t\t{self.Translators}")
 
         nb = Notebook(dlg)
         nb.pack(fill="both", expand=True)
@@ -89,3 +86,4 @@ class About(AboutDialog):
         bottomfm.pack(fill="x", side="bottom")
 
         clrcall.configure(dlg, childs_too=True)
+        clrcall.autocolor_run(dlg)
