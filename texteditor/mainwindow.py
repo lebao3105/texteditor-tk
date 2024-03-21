@@ -54,6 +54,11 @@ class MainWindow(Tk):
         if global_settings.getkey("editor.autosave", "enable") in global_settings.yes_values:
             this.autosave_global.set(True)
             this.autosave_local.set(True)
+        
+        # Colorize the app
+        clrcall.configure(this)
+        if clrcall.getkey("color", "auto", True, True, True):
+            clrcall.autocolor_run(this) # Known issue: this.lb won't be updated on color change outside the app
 
     def LoadMenu(this):
         # Configure some required menu items callback
@@ -90,13 +95,13 @@ class MainWindow(Tk):
 
     def BindEvents(this):
         bindcfg = this.bind
-        bindcfg("<Control-n>", lambda event: this.add_tab(this))
+        bindcfg("<Control-n>", this.add_tab)
         bindcfg("<Control-f>", lambda event: this.find())
         bindcfg("<Control-r>", lambda event: this.replace())
-        bindcfg("<Control-Shift-S>", lambda event: this.notebook.fileops.SaveAs())
+        bindcfg("<Control-Shift-S>", this.notebook.fileops.SaveAs)
         bindcfg("<Control-s>", this.notebook.fileops.SaveFileEvent)
         bindcfg("<Control-o>", this.notebook.fileops.OpenFileDialog)
-        bindcfg("<Control-w>", lambda event: this.notebook.fileops.GetEditorFromCurrTab().wrapmode())
+        bindcfg("<Control-w>", this.notebook.fileops.GetEditorFromCurrTab().wrapmode)
 
     # Menu bar callbacks
     def resetcfg(this, event=None) -> NoReturn:
@@ -105,25 +110,22 @@ class MainWindow(Tk):
             ResetEveryConfig()
 
     def opencfg(this, event=None):
-        this.add_tab()
-        this.notebook.fileops.LoadFile(CONFIGS_PATH)
+        new = Toplevel(this)
+        path = os.path.dirname(CONFIGS_PATH)
+        new.wm_title(path)
+        control = DirCtrl(new)
+        control.SetFolder(path)
+        control.Frame.pack(expand=True, fill="both")
 
     def GetColor(this):
         if clrcall.getkey("color", "background") == "dark":
             this.lb = "light"
         else:
             this.lb = "dark"
-        clrcall.recursive_configure = True
-        clrcall.autocolor_run(this)
 
     def change_color(this, event=None):
-        if this.autocolor.get() is True:
-            if not msgbox.askyesno(_("Warning"),
-                                   _("Changing the application color requires the autocolor function to be turned off. \
-                                     Don't worry, this change is only for this session.")): return
-
+        clrcall.configure(this, this.lb)
         clrcall.set("color", "background", this.lb)
-        clrcall.set("color", "autocolor", "no")
         this.GetColor()
 
     def add_tab(this, event=None):
@@ -147,22 +149,20 @@ class MainWindow(Tk):
                 this.notebook.fileops.GetEditorFromCurrTab().ShowWind()
 
     def openfolder(this):
+        path = askdirectory(initialdir=os.path.expanduser("~/"),
+                            mustexist=True, parent=this, title=_("Open a directory"))
         new = Toplevel(this)
-        path = askdirectory(os.path.expanduser("~/"), True, this, _("Open a directory"))
-        control = DirCtrl(new, w_styles=DC_HIDEROOT)
+        control = DirCtrl(new)
         control.SetFolder(path)
         control.Frame.pack(expand=True, fill="both")
         new.wm_title(path)
-        new.mainloop()
     
     def find(this):
         dlg = Toplevel(this)
         dlg.wm_title(_("Find for a text..."))
         FindReplace(dlg, this.notebook.fileops.GetEditorFromCurrTab(), TK_USEPACK).pack()
-        dlg.mainloop()
     
     def replace(this):
         dlg = Toplevel(this)
         dlg.wm_title(_("Find and Replace"))
-        FindReplace(dlg, this.notebook.fileops.GetEditorFromCurrTab(), TK_USEPACK, True).mainloop()
-        dlg.mainloop()
+        FindReplace(dlg, this.notebook.fileops.GetEditorFromCurrTab(), TK_USEPACK, True)

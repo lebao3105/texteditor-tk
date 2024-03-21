@@ -5,7 +5,6 @@ import typing
 
 from libtextworker.general import CraftItems, GetCurrentDir, Logger, strhdlr, formatter
 from libtextworker.get_config import GetConfig
-from libtextworker.interface import stock_ui_configs
 from libtextworker.interface.tk import ColorManager
 from libtextworker.versioning import is_development_version_from_project
 
@@ -77,5 +76,6 @@ def ready():
     _editor_config_load = find_resource("editor")
 
     clrcall = ColorManager(customfilepath=_theme_load)
+    clrcall.recursive_configure = True
 
     logger.info("Ready to go!")

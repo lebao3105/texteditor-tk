@@ -30,7 +30,7 @@ class FileOperations:
     def LoadFile(self, path: str):
         tabname: str = self.NoteBook.tab("current", "text")
 
-        if os.path.isfile(tabname.removesuffix(_(" (Duplicated)"))) or self.GetEditorFromCurrTab().IsModified:
+        if self.GetEditorFromCurrTab().IsModified:
             if self.NewTabFn_Args:
                 self.NewTabFn(**self.NewTabFn_Args)
             else:
@@ -66,8 +66,7 @@ class FileOperations:
         curreditor = self.GetEditorFromCurrTab()
         path = curreditor.FileLoaded if curreditor.FileLoaded else "this new file"
         if curreditor.IsModified:
-            ask = askyesnocancel(_("Not saved"),
-                     _(f"Save {path}? It has unsaved changes."))
+            ask = askyesnocancel(_("Not saved"), _(f"Save {path}? It has unsaved changes."))
             if ask:
                 if path != curreditor.FileLoaded:
                     self.SaveAs()

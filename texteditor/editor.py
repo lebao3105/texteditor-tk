@@ -1,4 +1,3 @@
-from hashlib import md5
 from libtextworker.interface.tk.editor import TextWidget
 from .extensions.autosave import AutoSave, AutoSaveConfig
 
