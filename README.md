@@ -11,9 +11,11 @@
     A simple and cross-platform Python text editor.
     </h3>
     <a href="https://github.com/lebao3105/texteditor-tk/actions/workflows/wheeltk.yml">
-        <image src="https://github.com/lebao3105/texteditor-tk/actions/workflows/wheeltk.yml/badge.svg?branch=data" align="right"/>
+        <image src="https://github.com/lebao3105/texteditor-tk/actions/workflows/wheel.yml/badge.svg" align="right"/>
     </a>
 </p>
+
+> This repository has been moved to [GitLab](https://gitlab.com/textworker).
 
 Expected new features:
 
@@ -80,4 +82,4 @@ $ git submodule update --init --recursive
 $ pip install cairosvg # If you want, for app icon support
 ```
 
-Install from source: ```pip install -e .```
+Install from source: ```pip install .```
